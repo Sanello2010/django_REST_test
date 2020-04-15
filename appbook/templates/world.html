@@ -1,0 +1,12 @@
+{% extends "main_template.html" %}
+
+{% block title %} WORLD {% endblock %}
+
+{% block book %}
+    <div class="container">
+        {% for c in count %}
+            {{ c }}
+        {% endfor %}
+        {% include 'numbers.html' %}
+    </div>
+{% endblock %}
