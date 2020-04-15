@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from appbook.serializer import BookSerializer
-from rest_framework.generics import CreateAPIView, ListAPIView
+from appbook.serializer import BookSerializer, BookCreateSerializer
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
 
 from appbook.models import Book
 
@@ -19,5 +18,14 @@ def world(request):
 
 class BookListView(ListAPIView):
     serializer_class = BookSerializer
+    queryset = Book.objects.all()
+
+
+class BookCreateView(CreateAPIView):
+    serializer_class = BookCreateSerializer
+
+
+class BookDetailView(RetrieveUpdateDestroyAPIView):
+    serializer_class = BookCreateSerializer
     queryset = Book.objects.all()
 # Create your views here.
